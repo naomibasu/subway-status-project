@@ -5,12 +5,15 @@
 
 This web service alerts users if a subway line gets delayed or recovers from being delayed. Every 30 seconds, the service will alert the user if there are any changes in subway statuses.
 
-Additionally the service includes two endpoints, '/status' and '/uptime', which allow the user to check if a specific line is delayed and get the uptime of a line respectively.
+Additionally, the service includes two endpoints, '/status' and '/uptime', which both take in the name of a line as an argument.
+
+/status: returns whether a line is currently delayed
+/uptime: returns the fraction of time that the line has not been delayed since inception (1 - (total_time_delayed / total_time)).
 
 The subway data is obtained from: http://web.mta.info/status/ServiceStatusSubway.xml
 
 Assumptions/Simplifications:
-* For the purposes of this assignment, a subway line is either delayed or running as normal i.e. if a line is not delayed, it is considered to be running as normal.
+* For the purposes of this project, a subway line is either delayed or running as normal i.e. if a line is not delayed, it is considered to be running as normal.
 * The 'SIR' train is denoted as 'SI' in the XML file, so it is also displayed as 'SI' in this service. If the user checks the status for 'SIR', it is converted to 'SI' first.
 
 
